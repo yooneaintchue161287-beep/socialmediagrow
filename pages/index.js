@@ -118,3 +118,4 @@ link: {
   color: "#e5e7eb",
   textDecoration: "none",
 },
+<a href="/login" style={styles.link}>Login</a>
