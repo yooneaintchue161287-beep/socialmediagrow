@@ -1,34 +1,109 @@
-import Navbar from "../components/Navbar";
-import StatCard from "../components/StatCard";
-import { stats, aiTips } from "../utils/mockData";
-
 export default function Dashboard() {
   return (
-    <div>
-      <Navbar />
+    <div style={styles.page}>
+      <header style={styles.header}>
+        <h1 style={styles.logo}>GrowFast</h1>
+      </header>
 
-      <div className="p-4">
-        <h2 className="text-xl font-bold mb-3">Your Growth</h2>
+      <section style={styles.welcome}>
+        <h2>Dashboard</h2>
+        <p>Welcome back 👋</p>
+      </section>
 
-        <div className="flex gap-3 overflow-x-auto mb-6">
-          {stats.map((s, i) => (
-            <StatCard key={i} title={s.title} value={s.value} />
-          ))}
+      <section style={styles.cards}>
+        <div style={styles.card}>
+          <h3>Total Campaigns</h3>
+          <p style={styles.number}>0</p>
         </div>
 
-        <h3 className="font-semibold mb-2">AI Tips</h3>
-
-        <div className="space-y-2">
-          {aiTips.map((tip, i) => (
-            <div
-              key={i}
-              className="bg-slate-800 p-3 rounded-lg text-sm"
-            >
-              🤖 {tip}
-            </div>
-          ))}
+        <div style={styles.card}>
+          <h3>Followers Gained</h3>
+          <p style={styles.number}>0</p>
         </div>
-      </div>
+
+        <div style={styles.card}>
+          <h3>Credits Balance</h3>
+          <p style={styles.number}>0</p>
+        </div>
+      </section>
+
+      <section style={styles.actions}>
+        <button style={styles.primary}>Start New Campaign</button>
+        <button style={styles.secondary}>View Campaigns</button>
+      </section>
     </div>
   );
 }
+
+/* ---------- Styles ---------- */
+
+const styles = {
+  page: {
+    minHeight: "100vh",
+    background: "#020617",
+    color: "#e5e7eb",
+    fontFamily: "system-ui, -apple-system",
+    paddingBottom: "40px",
+  },
+
+  header: {
+    padding: "16px 20px",
+    borderBottom: "1px solid #1e293b",
+  },
+
+  logo: {
+    fontSize: "18px",
+    fontWeight: "700",
+  },
+
+  welcome: {
+    padding: "20px",
+  },
+
+  cards: {
+    padding: "0 20px",
+    display: "grid",
+    gap: "14px",
+  },
+
+  card: {
+    background: "#020617",
+    border: "1px solid #1e293b",
+    borderRadius: "14px",
+    padding: "18px",
+  },
+
+  number: {
+    fontSize: "28px",
+    fontWeight: "800",
+    marginTop: "6px",
+  },
+
+  actions: {
+    padding: "20px",
+    display: "grid",
+    gap: "12px",
+  },
+
+  primary: {
+    padding: "14px",
+    fontSize: "16px",
+    fontWeight: "600",
+    borderRadius: "10px",
+    border: "none",
+    background: "#22c55e",
+    color: "#022c22",
+    cursor: "pointer",
+  },
+
+  secondary: {
+    padding: "14px",
+    fontSize: "16px",
+    fontWeight: "600",
+    borderRadius: "10px",
+    border: "1px solid #1e293b",
+    background: "transparent",
+    color: "#e5e7eb",
+    cursor: "pointer",
+  },
+};
