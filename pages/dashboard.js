@@ -95,6 +95,9 @@ const styles = {
     color: "#022c22",
     cursor: "pointer",
   },
+<a href="/campaign" style={styles.primary}>
+  Create Campaign
+</a>
 
   secondary: {
     padding: "14px",
