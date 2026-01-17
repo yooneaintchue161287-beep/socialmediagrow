@@ -5,10 +5,10 @@ export default function Home() {
       <header style={styles.header}>
         <h1 style={styles.logo}>GrowFast</h1>
         <nav style={styles.nav}>
-          <span>Dashboard</span>
-          <span>Followers</span>
-          <span>Pricing</span>
-        </nav>
+  <a href="/dashboard" style={styles.link}>Dashboard</a>
+  <span>Followers</span>
+  <span>Pricing</span>
+</nav>
       </header>
 
       {/* Hero */}
