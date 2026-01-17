@@ -114,3 +114,7 @@ const styles = {
     padding: "20px",
   },
 };
+link: {
+  color: "#e5e7eb",
+  textDecoration: "none",
+},
