@@ -5,10 +5,10 @@ export default function Home() {
       <header style={styles.header}>
         <h1 style={styles.logo}>GrowFast</h1>
         <nav style={styles.nav}>
-  <a href="/dashboard" style={styles.link}>Dashboard</a>
-  <span>Followers</span>
-  <span>Pricing</span>
-</nav>
+          <a href="/dashboard" style={styles.link}>Dashboard</a>
+          <a href="/pricing" style={styles.link}>Pricing</a>
+          <a href="/login" style={styles.link}>Login</a>
+        </nav>
       </header>
 
       {/* Hero */}
@@ -71,6 +71,11 @@ const styles = {
     opacity: 0.85,
   },
 
+  link: {
+    color: "#e5e7eb",
+    textDecoration: "none",
+  },
+
   hero: {
     padding: "60px 20px",
     textAlign: "center",
@@ -114,8 +119,3 @@ const styles = {
     padding: "20px",
   },
 };
-link: {
-  color: "#e5e7eb",
-  textDecoration: "none",
-},
-<a href="/login" style={styles.link}>Login</a>
