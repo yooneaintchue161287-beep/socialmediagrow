@@ -1,5 +1,10 @@
-import '../styles/globals.css'
+import BottomNav from "../components/BottomNav";
 
-export default function App({ Component, pageProps }) {
-  return <Component {...pageProps} />
+export default function MyApp({ Component, pageProps }) {
+  return (
+    <>
+      <Component {...pageProps} />
+      <BottomNav />
+    </>
+  );
 }
