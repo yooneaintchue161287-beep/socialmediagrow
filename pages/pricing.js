@@ -26,7 +26,10 @@ export default function Pricing() {
             <li>✔ AI Optimization</li>
             <li>✔ Faster Growth</li>
           </ul>
-          <button style={styles.buttonDark}>Upgrade</button>
+          <button style={styles.buttonDark} onClick={() => alert('Stripe Checkout coming soon!')}>
+  Upgrade
+</button>
+
         </div>
 
         {/* BUSINESS */}
