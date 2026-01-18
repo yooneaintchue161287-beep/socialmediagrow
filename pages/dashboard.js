@@ -24,7 +24,10 @@ export default function Dashboard() {
         <div style={styles.cardHighlight}>
           <h3>🚀 Upgrade Plan</h3>
           <p>Boost your growth faster</p>
-          <button style={styles.button}>Upgrade Now</button>
+          <Link href="/pricing">
+  <button style={styles.button}>Upgrade</button>
+</Link>
+
         </div>
       </div>
     </div>
