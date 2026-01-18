@@ -1,67 +1,61 @@
+import Link from "next/link";
+
 export default function Login() {
   return (
-    <div style={styles.page}>
-      <h1 style={styles.logo}>GrowFast</h1>
+    <div style={styles.container}>
+      <h1 style={styles.title}>🔐 Login</h1>
 
-      <h2 style={styles.title}>Log in</h2>
-
-      <input style={styles.input} placeholder="Email" />
+      <input style={styles.input} type="text" placeholder="Username" />
       <input style={styles.input} type="password" placeholder="Password" />
 
-      <button style={styles.primary}>Log in</button>
+      <button style={styles.button}>Login</button>
 
       <p style={styles.text}>
-        Don’t have an account? <a href="/signup" style={styles.link}>Sign up</a>
+        Don’t have an account?{" "}
+        <Link href="/signup" style={styles.link}>Sign Up</Link>
       </p>
     </div>
   );
 }
 
 const styles = {
-  page: {
-    minHeight: "100vh",
-    background: "#020617",
-    color: "#e5e7eb",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
+  container: {
     padding: "20px",
-    fontFamily: "system-ui",
-  },
-  logo: {
-    textAlign: "center",
-    fontSize: "24px",
-    fontWeight: "800",
-    marginBottom: "20px",
+    minHeight: "100vh",
+    background: "#0b0b0b",
+    color: "#fff",
   },
   title: {
-    textAlign: "center",
+    color: "#00e5ff",
+    fontSize: "24px",
     marginBottom: "20px",
   },
   input: {
-    padding: "14px",
+    width: "100%",
+    padding: "12px",
     marginBottom: "12px",
     borderRadius: "10px",
-    border: "1px solid #1e293b",
-    background: "#020617",
-    color: "#e5e7eb",
+    border: "1px solid #333",
+    background: "#151515",
+    color: "#fff",
   },
-  primary: {
-    padding: "14px",
+  button: {
+    width: "100%",
+    padding: "12px",
     borderRadius: "10px",
     border: "none",
-    background: "#22c55e",
-    color: "#022c22",
-    fontWeight: "600",
-    marginTop: "10px",
+    background: "#00e5ff",
+    fontWeight: "bold",
+    cursor: "pointer",
+    marginBottom: "12px",
   },
   text: {
-    marginTop: "16px",
-    textAlign: "center",
     fontSize: "14px",
+    color: "#aaa",
   },
   link: {
-    color: "#22c55e",
+    color: "#00e5ff",
+    fontWeight: "bold",
     textDecoration: "none",
   },
 };
