@@ -1,112 +1,76 @@
 export default function Dashboard() {
   return (
-    <div style={styles.page}>
-      <header style={styles.header}>
-        <h1 style={styles.logo}>GrowFast</h1>
-      </header>
+    <div style={styles.container}>
+      <h1 style={styles.title}>📊 Dashboard</h1>
 
-      <section style={styles.welcome}>
-        <h2>Dashboard</h2>
-        <p>Welcome back 👋</p>
-      </section>
-
-      <section style={styles.cards}>
-        <div style={styles.card}>
-          <h3>Total Campaigns</h3>
-          <p style={styles.number}>0</p>
-        </div>
-
+      <div style={styles.grid}>
         <div style={styles.card}>
           <h3>Followers Gained</h3>
-          <p style={styles.number}>0</p>
+          <p style={styles.number}>+1,284</p>
         </div>
 
         <div style={styles.card}>
-          <h3>Credits Balance</h3>
-          <p style={styles.number}>0</p>
+          <h3>Active Campaigns</h3>
+          <p style={styles.number}>3</p>
         </div>
-      </section>
 
-      <section style={styles.actions}>
-        <button style={styles.primary}>Start New Campaign</button>
-        <button style={styles.secondary}>View Campaigns</button>
-      </section>
+        <div style={styles.card}>
+          <h3>Estimated Reach</h3>
+          <p style={styles.number}>48,900</p>
+        </div>
+
+        <div style={styles.cardHighlight}>
+          <h3>🚀 Upgrade Plan</h3>
+          <p>Boost your growth faster</p>
+          <button style={styles.button}>Upgrade Now</button>
+        </div>
+      </div>
     </div>
   );
 }
 
-/* ---------- Styles ---------- */
-
 const styles = {
-  page: {
-    minHeight: "100vh",
-    background: "#020617",
-    color: "#e5e7eb",
-    fontFamily: "system-ui, -apple-system",
-    paddingBottom: "40px",
-  },
-
-  header: {
-    padding: "16px 20px",
-    borderBottom: "1px solid #1e293b",
-  },
-
-  logo: {
-    fontSize: "18px",
-    fontWeight: "700",
-  },
-
-  welcome: {
+  container: {
     padding: "20px",
+    paddingBottom: "80px",
+    background: "#0b0b0b",
+    minHeight: "100vh",
+    color: "#fff",
   },
-
-  cards: {
-    padding: "0 20px",
+  title: {
+    marginBottom: "20px",
+    color: "#00e5ff",
+  },
+  grid: {
     display: "grid",
-    gap: "14px",
+    gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))",
+    gap: "16px",
   },
-
   card: {
-    background: "#020617",
-    border: "1px solid #1e293b",
-    borderRadius: "14px",
-    padding: "18px",
+    background: "#151515",
+    padding: "16px",
+    borderRadius: "12px",
+    border: "1px solid #222",
   },
-
+  cardHighlight: {
+    background: "linear-gradient(135deg, #00e5ff, #0066ff)",
+    padding: "16px",
+    borderRadius: "12px",
+    color: "#000",
+  },
   number: {
     fontSize: "28px",
-    fontWeight: "800",
-    marginTop: "6px",
+    fontWeight: "bold",
+    marginTop: "8px",
   },
-
-  actions: {
-    padding: "20px",
-    display: "grid",
-    gap: "12px",
-  },
-
-  primary: {
-    padding: "14px",
-    fontSize: "16px",
-    fontWeight: "600",
-    borderRadius: "10px",
+  button: {
+    marginTop: "12px",
+    padding: "10px",
+    borderRadius: "8px",
     border: "none",
-    background: "#22c55e",
-    color: "#022c22",
-    cursor: "pointer",
-  },
-<a href="/campaign" style={styles.primary}>
-  Create Campaign
-</a>
-
-  secondary: {
-    padding: "14px",
-    fontSize: "16px",
-    fontWeight: "600",
-    borderRadius: "10px",
-    border: "1px solid #1e293b",
-    background: "transparent",
-    color: "#e5e7eb",
+    background: "#000",
+    color: "#00e5ff",
+    fontWeight: "bold",
     cursor: "pointer",
   },
 };
