@@ -1,81 +1,73 @@
-import Link from "next/link";
-
 export default function Dashboard() {
   return (
-    <div style={styles.container}>
-      <h1 style={styles.title}>📊 Dashboard</h1>
+    <div style={styles.page}>
+      <h1 style={styles.title}>Dashboard</h1>
 
-      <div style={styles.grid}>
-        <div style={styles.card}>
-          <h3>Followers Gained</h3>
-          <p style={styles.number}>+1,284</p>
-        </div>
+      <div style={styles.card}>
+        <label style={styles.label}>TikTok Username</label>
+        <input
+          placeholder="@yourusername"
+          style={styles.input}
+        />
 
-        <div style={styles.card}>
-          <h3>Active Campaigns</h3>
-          <p style={styles.number}>3</p>
-        </div>
+        <button style={styles.button}>
+          Submit for Growth
+        </button>
 
-        <div style={styles.card}>
-          <h3>Estimated Reach</h3>
-          <p style={styles.number}>48,900</p>
-        </div>
-
-        <div style={styles.cardHighlight}>
-          <h3>🚀 Upgrade Plan</h3>
-          <p>Boost your growth faster</p>
-          <Link href="/pricing">
-  <button style={styles.button}>Upgrade</button>
-</Link>
-
-        </div>
+        <p style={styles.status}>
+          Campaign Status: <strong>Pending</strong>
+        </p>
       </div>
     </div>
   );
 }
 
 const styles = {
-  container: {
-    padding: "20px",
-    paddingBottom: "80px",
-    background: "#0b0b0b",
+  page: {
     minHeight: "100vh",
-    color: "#fff",
+    background: "#020617",
+    color: "#e5e7eb",
+    padding: "24px",
+    fontFamily: "system-ui",
   },
   title: {
-    marginBottom: "20px",
-    color: "#00e5ff",
-  },
-  grid: {
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))",
-    gap: "16px",
+    fontSize: "22px",
+    marginBottom: "16px",
   },
   card: {
-    background: "#151515",
-    padding: "16px",
+    background: "#020617",
+    border: "1px solid #1e293b",
     borderRadius: "12px",
-    border: "1px solid #222",
+    padding: "20px",
+    maxWidth: "420px",
   },
-  cardHighlight: {
-    background: "linear-gradient(135deg, #00e5ff, #0066ff)",
-    padding: "16px",
-    borderRadius: "12px",
-    color: "#000",
+  label: {
+    fontSize: "14px",
+    marginBottom: "6px",
+    display: "block",
   },
-  number: {
-    fontSize: "28px",
-    fontWeight: "bold",
-    marginTop: "8px",
+  input: {
+    width: "100%",
+    padding: "12px",
+    borderRadius: "8px",
+    border: "1px solid #1e293b",
+    background: "#020617",
+    color: "#e5e7eb",
+    marginBottom: "12px",
   },
   button: {
-    marginTop: "12px",
-    padding: "10px",
-    borderRadius: "8px",
+    width: "100%",
+    padding: "12px",
+    background: "#22c55e",
+    color: "#022c22",
     border: "none",
-    background: "#000",
-    color: "#00e5ff",
-    fontWeight: "bold",
+    borderRadius: "8px",
+    fontWeight: "600",
     cursor: "pointer",
+  },
+  status: {
+    marginTop: "14px",
+    fontSize: "14px",
+    opacity: 0.85,
   },
 };
