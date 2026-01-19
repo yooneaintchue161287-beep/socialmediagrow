@@ -1,114 +1,71 @@
 export default function Pricing() {
   return (
-    <div style={styles.container}>
-      <h1 style={styles.title}>💳 Pricing Plans</h1>
-      <p style={styles.subtitle}>Grow faster with AI-powered promotion</p>
+    <div style={styles.page}>
+      <h1 style={styles.title}>Pricing</h1>
 
-      <div style={styles.grid}>
-        {/* FREE */}
-        <div style={styles.card}>
-          <h3>Free</h3>
-          <p style={styles.price}>$0 / month</p>
-          <ul style={styles.list}>
-            <li>✔ 1 Campaign</li>
-            <li>✔ Basic Reach</li>
-            <li>✖ Auto Optimization</li>
-          </ul>
-          <button style={styles.button}>Current Plan</button>
-        </div>
+      <p style={styles.subtitle}>
+        Simple, affordable, creator-friendly. One plan to get started.
+      </p>
 
-        {/* PRO */}
-        <div style={styles.cardHighlight}>
-          <h3>🔥 Pro</h3>
-          <p style={styles.price}>$19 / month</p>
-          <ul style={styles.list}>
-            <li>✔ 10 Campaigns</li>
-            <li>✔ AI Optimization</li>
-            <li>✔ Faster Growth</li>
-          </ul>
-          <button style={styles.buttonDark} onClick={() => alert('Stripe Checkout coming soon!')}>
-  Upgrade
-</button>
-
-        </div>
-
-        {/* BUSINESS */}
-        <div style={styles.card}>
-          <h3>Business</h3>
-          <p style={styles.price}>$49 / month</p>
-          <ul style={styles.list}>
-            <li>✔ Unlimited Campaigns</li>
-            <li>✔ Priority Boost</li>
-            <li>✔ Analytics</li>
-          </ul>
-          <button style={styles.button}>Upgrade</button>
-        </div>
+      <div style={styles.card}>
+        <h2>Starter Plan</h2>
+        <p>AI + human-assisted TikTok growth</p>
+        <p style={styles.price}>₱499 / campaign</p>
+        <button style={styles.button}>
+          Start Growth
+        </button>
       </div>
+
+      <p style={styles.note}>
+        Pay once, grow your TikTok profile. No bots, real followers.
+      </p>
     </div>
   );
 }
 
 const styles = {
-  container: {
-    padding: "20px",
-    background: "#0b0b0b",
+  page: {
     minHeight: "100vh",
-    color: "#fff",
+    background: "#020617",
+    color: "#e5e7eb",
+    padding: "24px",
+    fontFamily: "system-ui",
+    textAlign: "center",
   },
   title: {
-    color: "#00e5ff",
-    marginBottom: "6px",
+    fontSize: "22px",
+    marginBottom: "8px",
   },
   subtitle: {
-    color: "#aaa",
-    marginBottom: "24px",
-  },
-  grid: {
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-    gap: "16px",
+    fontSize: "16px",
+    opacity: 0.8,
+    marginBottom: "20px",
   },
   card: {
-    background: "#151515",
-    padding: "20px",
-    borderRadius: "14px",
-    border: "1px solid #222",
-  },
-  cardHighlight: {
-    background: "linear-gradient(135deg, #00e5ff, #0066ff)",
-    padding: "20px",
-    borderRadius: "14px",
-    color: "#000",
+    background: "#0f172a",
+    border: "1px solid #1e293b",
+    borderRadius: "12px",
+    padding: "24px",
+    maxWidth: "360px",
+    margin: "0 auto 16px",
   },
   price: {
-    fontSize: "22px",
-    fontWeight: "bold",
-    margin: "10px 0",
-  },
-  list: {
-    listStyle: "none",
-    padding: 0,
-    lineHeight: "1.8",
+    fontSize: "24px",
+    fontWeight: "700",
+    margin: "12px 0",
   },
   button: {
-    marginTop: "16px",
-    width: "100%",
-    padding: "10px",
-    borderRadius: "10px",
+    padding: "12px 24px",
+    background: "#22c55e",
+    color: "#022c22",
     border: "none",
-    background: "#00e5ff",
-    fontWeight: "bold",
+    borderRadius: "8px",
+    fontWeight: "600",
     cursor: "pointer",
   },
-  buttonDark: {
-    marginTop: "16px",
-    width: "100%",
-    padding: "10px",
-    borderRadius: "10px",
-    border: "none",
-    background: "#000",
-    color: "#00e5ff",
-    fontWeight: "bold",
-    cursor: "pointer",
+  note: {
+    fontSize: "12px",
+    opacity: 0.7,
+    marginTop: "8px",
   },
 };
