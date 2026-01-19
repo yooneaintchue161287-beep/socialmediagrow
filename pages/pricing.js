@@ -1,20 +1,8 @@
 export default function Pricing() {
 
   const handlePay = async () => {
-    try {
-      const res = await fetch("/api/paymongo", {
-        method: "POST",
-      });
-
-      const data = await res.json();
-      console.log("PayMongo response:", data);
-
-      alert("Payment initialized. Check PayMongo dashboard.");
-    } catch (error) {
-      console.error(error);
-      alert("Payment failed");
-    }
-  };
+  alert("Button clicked!");
+};
 
   return (
     <div style={{ padding: "40px", textAlign: "center" }}>
