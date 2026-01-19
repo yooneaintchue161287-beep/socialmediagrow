@@ -1,23 +1,50 @@
+import { useState } from "react";
+
 export default function Dashboard() {
+  const [username, setUsername] = useState("");
+  const [status, setStatus] = useState("Pending");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (!username) {
+      alert("Please enter your TikTok username.");
+      return;
+    }
+
+    // For MVP, just update status
+    setStatus("Submitted! Growth campaign in progress...");
+
+    // Clear input
+    setUsername("");
+  };
+
   return (
     <div style={styles.page}>
       <h1 style={styles.title}>Dashboard</h1>
 
-      <div style={styles.card}>
+      <p style={styles.subtitle}>
+        Enter your TikTok username to start your growth campaign.
+      </p>
+
+      <form onSubmit={handleSubmit} style={styles.card}>
         <label style={styles.label}>TikTok Username</label>
         <input
+          type="text"
           placeholder="@yourusername"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
           style={styles.input}
         />
 
-        <button style={styles.button}>
+        <button type="submit" style={styles.button}>
           Submit for Growth
         </button>
 
         <p style={styles.status}>
-          Campaign Status: <strong>Pending</strong>
+          Campaign Status: <strong>{status}</strong>
         </p>
-      </div>
+      </form>
     </div>
   );
 }
@@ -29,22 +56,30 @@ const styles = {
     color: "#e5e7eb",
     padding: "24px",
     fontFamily: "system-ui",
+    textAlign: "center",
   },
   title: {
     fontSize: "22px",
-    marginBottom: "16px",
+    marginBottom: "8px",
+  },
+  subtitle: {
+    fontSize: "16px",
+    opacity: 0.8,
+    marginBottom: "20px",
   },
   card: {
-    background: "#020617",
+    background: "#0f172a",
     border: "1px solid #1e293b",
     borderRadius: "12px",
-    padding: "20px",
-    maxWidth: "420px",
+    padding: "24px",
+    maxWidth: "360px",
+    margin: "0 auto",
   },
   label: {
+    display: "block",
     fontSize: "14px",
     marginBottom: "6px",
-    display: "block",
+    textAlign: "left",
   },
   input: {
     width: "100%",
@@ -64,9 +99,9 @@ const styles = {
     borderRadius: "8px",
     fontWeight: "600",
     cursor: "pointer",
+    marginBottom: "12px",
   },
   status: {
-    marginTop: "14px",
     fontSize: "14px",
     opacity: 0.85,
   },
