@@ -1,8 +1,8 @@
 export default function Pricing() {
 
-  const handlePay = async () => {
-    alert("Button clicked!");
-  };
+  const handlePay = () => {
+  alert("Payment flow will start here");
+};
 
   return (
     <div
