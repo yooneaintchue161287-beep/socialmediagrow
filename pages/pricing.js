@@ -1,8 +1,21 @@
 export default function Pricing() {
-  const handlePay = () => {
-    alert("Payment flow will start here 💳");
-    // Next step: redirect to PayMongo checkout
-  };
+  const handlePay = async () => {
+  try {
+    const res = await fetch("/api/paymongo", {
+      method: "POST",
+    });
+
+    const data = await res.json();
+
+    if (data.checkoutUrl) {
+      window.location.href = data.checkoutUrl;
+    } else {
+      alert("Payment failed");
+    }
+  } catch (err) {
+    alert("Error connecting to payment");
+  }
+};
 
   return (
     <div style={styles.page}>
