@@ -1,61 +1,20 @@
-import Link from "next/link";
-
 export default function Login() {
   return (
-    <div style={styles.container}>
-      <h1 style={styles.title}>🔐 Login</h1>
-
-      <input style={styles.input} type="text" placeholder="Username" />
-      <input style={styles.input} type="password" placeholder="Password" />
-
+    <div style={styles.page}>
+      <h1>Login</h1>
+      <input placeholder="Email" style={styles.input} />
+      <input placeholder="Password" type="password" style={styles.input} />
       <button style={styles.button}>Login</button>
-
-      <p style={styles.text}>
-        Don’t have an account?{" "}
-        <Link href="/signup" style={styles.link}>Sign Up</Link>
+      <p>
+        No account? <a href="/signup" style={styles.link}>Sign Up</a>
       </p>
     </div>
   );
 }
 
 const styles = {
-  container: {
-    padding: "20px",
-    minHeight: "100vh",
-    background: "#0b0b0b",
-    color: "#fff",
-  },
-  title: {
-    color: "#00e5ff",
-    fontSize: "24px",
-    marginBottom: "20px",
-  },
-  input: {
-    width: "100%",
-    padding: "12px",
-    marginBottom: "12px",
-    borderRadius: "10px",
-    border: "1px solid #333",
-    background: "#151515",
-    color: "#fff",
-  },
-  button: {
-    width: "100%",
-    padding: "12px",
-    borderRadius: "10px",
-    border: "none",
-    background: "#00e5ff",
-    fontWeight: "bold",
-    cursor: "pointer",
-    marginBottom: "12px",
-  },
-  text: {
-    fontSize: "14px",
-    color: "#aaa",
-  },
-  link: {
-    color: "#00e5ff",
-    fontWeight: "bold",
-    textDecoration: "none",
-  },
+  page: { padding: 20, textAlign: "center", minHeight: "100vh", background: "#0f172a", color: "#e5e7eb", fontFamily: "system-ui, sans-serif" },
+  input: { display: "block", margin: "10px auto", padding: 10, width: "80%", borderRadius: 8, border: "1px solid #ccc" },
+  button: { padding: "14px 28px", fontSize: 16, borderRadius: 8, background: "#22c55e", border: "none", color: "#022c22", cursor: "pointer" },
+  link: { color: "#22c55e", textDecoration: "none" },
 };
