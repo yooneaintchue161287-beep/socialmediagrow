@@ -1,10 +1,6 @@
 export default async function handler(req, res) {
-  if (req.method !== "POST") {
-    return res.status(405).json({ error: "Method not allowed" });
-  }
-
   try {
-    const response = await fetch("https://api.paymongo.com/v1/links", {
+    const response = await fetch("https://api.paymongo.com/v1/checkout_sessions", {
       method: "POST",
       headers: {
         Authorization:
@@ -15,9 +11,17 @@ export default async function handler(req, res) {
       body: JSON.stringify({
         data: {
           attributes: {
-            amount: 49900, // ₱499.00 (PayMongo uses centavos)
-            description: "GrowFast Monthly Subscription",
-            remarks: "Subscription",
+            line_items: [
+              {
+                amount: 49900, // ₱499.00
+                currency: "PHP",
+                name: "GrowFast Monthly Plan",
+                quantity: 1,
+              },
+            ],
+            payment_method_types: ["card", "gcash", "paymaya"],
+            success_url: process.env.NEXT_PUBLIC_SITE_URL + "/dashboard",
+            cancel_url: process.env.NEXT_PUBLIC_SITE_URL + "/pricing",
           },
         },
       }),
@@ -28,7 +32,7 @@ export default async function handler(req, res) {
     res.status(200).json({
       checkoutUrl: data.data.attributes.checkout_url,
     });
-  } catch (err) {
-    res.status(500).json({ error: "Payment error" });
+  } catch (error) {
+    res.status(500).json({ error: "PayMongo error" });
   }
 }
