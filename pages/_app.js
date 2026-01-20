@@ -1,45 +1,20 @@
-import Link from "next/link";
-
-export default function MyApp({ Component, pageProps }) {
+export default function Signup() {
   return (
-    <>
-      <Component {...pageProps} />
-
-      <nav style={styles.nav}>
-        <Link href="/">
-          <span style={styles.item}>🏠 Home</span>
-        </Link>
-        <Link href="/dashboard">
-          <span style={styles.item}>📊 Dashboard</span>
-        </Link>
-        <Link href="/pricing">
-          <span style={styles.item}>💳 Pricing</span>
-        </Link>
-        <Link href="/profile">
-          <span style={styles.item}>👤 Profile</span>
-        </Link>
-      </nav>
-    </>
+    <div style={styles.page}>
+      <h1>Sign Up</h1>
+      <input placeholder="Email" style={styles.input} />
+      <input placeholder="Password" type="password" style={styles.input} />
+      <button style={styles.button}>Sign Up</button>
+      <p>
+        Already have an account? <a href="/login" style={styles.link}>Login</a>
+      </p>
+    </div>
   );
 }
 
 const styles = {
-  nav: {
-    position: "fixed",
-    bottom: 0,
-    left: 0,
-    right: 0,
-    height: "60px",
-    background: "#0b0b0b",
-    display: "flex",
-    justifyContent: "space-around",
-    alignItems: "center",
-    borderTop: "1px solid #222",
-    zIndex: 1000,
-  },
-  item: {
-    color: "#00e5ff",
-    fontSize: "14px",
-    cursor: "pointer",
-  },
+  page: { padding: 20, textAlign: "center", minHeight: "100vh", background: "#0f172a", color: "#e5e7eb", fontFamily: "system-ui, sans-serif" },
+  input: { display: "block", margin: "10px auto", padding: 10, width: "80%", borderRadius: 8, border: "1px solid #ccc" },
+  button: { padding: "14px 28px", fontSize: 16, borderRadius: 8, background: "#22c55e", border: "none", color: "#022c22", cursor: "pointer" },
+  link: { color: "#22c55e", textDecoration: "none" },
 };
