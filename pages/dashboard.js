@@ -7,6 +7,11 @@ export default function Dashboard() {
 
   useEffect(() => {
     const user = localStorage.getItem("user")
+const paid = localStorage.getItem("paid")
+
+if (!user || !paid) {
+  router.replace("/pricing")
+}
 
     if (!user) {
       router.replace("/login")
