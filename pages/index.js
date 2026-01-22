@@ -19,9 +19,7 @@ export default function Home() {
         </p>
 
         <a href="/pricing">
-          <button style={styles.primaryButton}>
-            Start Growing
-          </button>
+          <button style={styles.primaryButton}>Start Growing</button>
         </a>
       </section>
 
@@ -46,14 +44,14 @@ export default function Home() {
   );
 }
 
-/* ---------- Styles (MUST be below component) ---------- */
+/* ---------------- STYLES ---------------- */
 
 const styles = {
   page: {
     minHeight: "100vh",
     background: "linear-gradient(180deg, #0f172a, #020617)",
     color: "#e5e7eb",
-    fontFamily: "system-ui, -apple-system, BlinkMacSystemFont",
+    fontFamily: "system-ui",
   },
 
   header: {
@@ -71,7 +69,6 @@ const styles = {
   nav: {
     display: "flex",
     gap: "16px",
-    fontSize: "14px",
   },
 
   link: {
@@ -92,7 +89,6 @@ const styles = {
   },
 
   subtitle: {
-    fontSize: "16px",
     opacity: 0.85,
     maxWidth: "420px",
     margin: "0 auto 28px",
@@ -106,6 +102,7 @@ const styles = {
     border: "none",
     background: "#22c55e",
     color: "#022c22",
+    cursor: "pointer",
   },
 
   features: {
