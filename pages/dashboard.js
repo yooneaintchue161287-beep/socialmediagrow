@@ -1,16 +1,35 @@
-export default function Dashboard() {
-  return (
-    <div style={styles.page}>
-      <h1>Dashboard</h1>
-      <p>Welcome! Your AI promotion campaign will start here.</p>
-      <a href="/pricing">
-        <button style={styles.button}>Upgrade Plan</button>
-      </a>
-    </div>
-  );
-}
+import { useEffect, useState } from "react"
+import { useRouter } from "next/router"
 
-const styles = {
-  page: { padding: 20, textAlign: "center", minHeight: "100vh", background: "#0f172a", color: "#e5e7eb", fontFamily: "system-ui, sans-serif" },
-  button: { padding: "14px 28px", fontSize: 16, borderRadius: 8, background: "#22c55e", border: "none", color: "#022c22", cursor: "pointer" },
-};
+export default function Dashboard() {
+  const router = useRouter()
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    const user = localStorage.getItem("user")
+
+    if (!user) {
+      router.replace("/login")
+    } else {
+      setLoading(false)
+    }
+  }, [router])
+
+  if (loading) return <p style={{ padding: 20 }}>Loading...</p>
+
+  return (
+    <div style={{ padding: 40 }}>
+      <h1>Dashboard</h1>
+      <p>Welcome! You are logged in.</p>
+
+      <button
+        onClick={() => {
+          localStorage.removeItem("user")
+          router.push("/login")
+        }}
+      >
+        Logout
+      </button>
+    </div>
+  )
+}
