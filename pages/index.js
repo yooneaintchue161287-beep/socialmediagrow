@@ -1,6 +1,7 @@
 export default function Home() {
   return (
     <div style={styles.page}>
+      {/* Header */}
       <header style={styles.header}>
         <h1 style={styles.logo}>GrowFast</h1>
         <nav style={styles.nav}>
@@ -10,23 +11,32 @@ export default function Home() {
         </nav>
       </header>
 
+      {/* Hero */}
       <section style={styles.hero}>
         <h2 style={styles.title}>Grow Real Followers</h2>
-        <p style={styles.subtitle}>AI-powered promotion for TikTok, Instagram & Facebook</p>
+        <p style={styles.subtitle}>
+          AI-powered promotion for TikTok, Instagram & Facebook
+        </p>
+
         <a href="/pricing">
-          <button style={styles.primaryButton}>Start Growing</button>
+          <button style={styles.primaryButton}>
+            Start Growing
+          </button>
         </a>
       </section>
 
+      {/* Features */}
       <section style={styles.features}>
         <div style={styles.card}>
           <h3>🚀 Faster Growth</h3>
           <p>Reach real users organically, not bots.</p>
         </div>
+
         <div style={styles.card}>
           <h3>💰 Cheaper Than Ads</h3>
           <p>Spend less than Facebook & TikTok ads.</p>
         </div>
+
         <div style={styles.card}>
           <h3>🤖 AI Powered</h3>
           <p>Our AI targets the right audience for you.</p>
@@ -36,16 +46,78 @@ export default function Home() {
   );
 }
 
+/* ---------- Styles (MUST be below component) ---------- */
+
 const styles = {
-  page: { minHeight: "100vh", background: "#0f172a", color: "#e5e7eb", fontFamily: "system-ui, sans-serif" },
-  header: { padding: "16px 20px", display: "flex", justifyContent: "space-between", alignItems: "center" },
-  logo: { fontSize: 20, fontWeight: 700 },
-  nav: { display: "flex", gap: "14px", fontSize: 14, opacity: 0.85 },
-  link: { color: "#e5e7eb", textDecoration: "none" },
-  hero: { padding: "60px 20px", textAlign: "center" },
-  title: { fontSize: 32, fontWeight: 800, marginBottom: 12 },
-  subtitle: { fontSize: 16, opacity: 0.85, maxWidth: 420, margin: "0 auto 28px" },
-  primaryButton: { padding: "14px 28px", fontSize: 16, fontWeight: 600, borderRadius: 10, border: "none", background: "#22c55e", color: "#022c22", cursor: "pointer" },
-  features: { padding: 20, display: "grid", gridTemplateColumns: "1fr", gap: 16 },
-  card: { background: "#020617", border: "1px solid #1e293b", borderRadius: 14, padding: 20 },
+  page: {
+    minHeight: "100vh",
+    background: "linear-gradient(180deg, #0f172a, #020617)",
+    color: "#e5e7eb",
+    fontFamily: "system-ui, -apple-system, BlinkMacSystemFont",
+  },
+
+  header: {
+    padding: "16px 20px",
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+
+  logo: {
+    fontSize: "20px",
+    fontWeight: "700",
+  },
+
+  nav: {
+    display: "flex",
+    gap: "16px",
+    fontSize: "14px",
+  },
+
+  link: {
+    color: "#e5e7eb",
+    textDecoration: "none",
+    opacity: 0.85,
+  },
+
+  hero: {
+    padding: "60px 20px",
+    textAlign: "center",
+  },
+
+  title: {
+    fontSize: "32px",
+    fontWeight: "800",
+    marginBottom: "12px",
+  },
+
+  subtitle: {
+    fontSize: "16px",
+    opacity: 0.85,
+    maxWidth: "420px",
+    margin: "0 auto 28px",
+  },
+
+  primaryButton: {
+    padding: "14px 28px",
+    fontSize: "16px",
+    fontWeight: "600",
+    borderRadius: "10px",
+    border: "none",
+    background: "#22c55e",
+    color: "#022c22",
+  },
+
+  features: {
+    padding: "20px",
+    display: "grid",
+    gap: "16px",
+  },
+
+  card: {
+    background: "#020617",
+    border: "1px solid #1e293b",
+    borderRadius: "14px",
+    padding: "20px",
+  },
 };
