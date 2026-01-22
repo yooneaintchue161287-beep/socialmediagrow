@@ -1,57 +1,102 @@
+import React from "react"
+
 export default function Pricing() {
-  const handleSelectPlan = (plan) => {
-    alert(`You selected the ${plan} plan`);
-    window.location.href = "/dashboard";
-  };
+  // Function to handle payment
+  const handlePay = async () => {
+    try {
+      const res = await fetch("/api/paymongo", { method: "POST" })
+      const data = await res.json()
+
+      if (data.url) {
+        // Redirect user to PayMongo checkout page
+        window.location.href = data.url
+      } else {
+        alert("Payment failed")
+      }
+    } catch (err) {
+      console.error(err)
+      alert("Payment error")
+    }
+  }
 
   return (
-    <div style={{ padding: 24, fontFamily: "system-ui" }}>
-      <h1>Pricing</h1>
-      <p>Choose a plan to grow your social media</p>
+    <div style={styles.page}>
+      <header style={styles.header}>
+        <h1 style={styles.logo}>GrowFast</h1>
+      </header>
 
-      <div style={{ marginTop: 30 }}>
+      <main style={styles.main}>
+        <h2 style={styles.title}>Choose Your Plan</h2>
 
-        {/* Starter Plan */}
-        <div style={cardStyle}>
-          <h3>Starter</h3>
-          <p>$9 / month</p>
-          <button
-            style={buttonStyle}
-            onClick={() => handleSelectPlan("Starter")}
-          >
-            Get Started
+        <div style={styles.card}>
+          <h3>Starter Plan</h3>
+          <p>Grow real followers automatically.</p>
+          <p>₱499 / month</p>
+          <button style={styles.button} onClick={handlePay}>
+            Start Growing
           </button>
         </div>
 
-        {/* Pro Plan */}
-        <div style={cardStyle}>
-          <h3>Pro</h3>
-          <p>$29 / month</p>
-          <button
-            style={buttonStyle}
-            onClick={() => handleSelectPlan("Pro")}
-          >
-            Start Pro
+        <div style={styles.card}>
+          <h3>Pro Plan</h3>
+          <p>Advanced targeting + analytics.</p>
+          <p>₱999 / month</p>
+          <button style={styles.button} onClick={handlePay}>
+            Start Growing
           </button>
         </div>
-
-      </div>
+      </main>
     </div>
-  );
+  )
 }
 
-/* ---------- styles ---------- */
-
-const cardStyle = {
-  border: "1px solid #ddd",
-  padding: 20,
-  borderRadius: 10,
-  marginBottom: 20,
-  maxWidth: 300,
-};
-
-const buttonStyle = {
-  marginTop: 10,
-  padding: "10px 16px",
-  cursor: "pointer",
-};
+/* ---------- Styles ---------- */
+const styles = {
+  page: {
+    minHeight: "100vh",
+    background: "linear-gradient(180deg, #0f172a, #020617)",
+    color: "#e5e7eb",
+    fontFamily: "system-ui, -apple-system, BlinkMacSystemFont",
+  },
+  header: {
+    padding: "16px 20px",
+    display: "flex",
+    justifyContent: "center",
+    borderBottom: "1px solid #1e293b",
+  },
+  logo: {
+    fontSize: "24px",
+    fontWeight: "700",
+  },
+  main: {
+    padding: "40px 20px",
+    display: "grid",
+    gap: "24px",
+    maxWidth: "600px",
+    margin: "0 auto",
+  },
+  title: {
+    fontSize: "28px",
+    fontWeight: "700",
+    textAlign: "center",
+    marginBottom: "24px",
+  },
+  card: {
+    background: "#020617",
+    border: "1px solid #1e293b",
+    borderRadius: "14px",
+    padding: "24px",
+    textAlign: "center",
+  },
+  button: {
+    marginTop: "16px",
+    padding: "12px 24px",
+    fontSize: "16px",
+    fontWeight: "600",
+    borderRadius: "10px",
+    border: "none",
+    background: "#22c55e",
+    color: "#022c22",
+    cursor: "pointer",
+  },
+}
