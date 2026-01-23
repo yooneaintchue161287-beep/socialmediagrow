@@ -1,48 +1,53 @@
 export default function Pricing() {
-  const handlePay = async () => {
-    alert("Payment successful (TEST MODE)")
-    localStorage.setItem("paid", "true")
-    window.location.href = "/dashboard"
-  }
+  const handleSubscribe = async () => {
+    const res = await fetch("/api/create-subscription", {
+      method: "POST",
+    });
+    const data = await res.json();
+    window.location.href = data.checkout_url;
+  };
 
   return (
     <div style={styles.page}>
       <h1>Pricing</h1>
-
       <div style={styles.card}>
-        <h2>Free</h2>
-        <p>3 AI generations / day</p>
-      </div>
-
-      <div style={styles.card}>
-        <h2>Pro</h2>
-        <p>Unlimited AI</p>
-        <button style={styles.button} onClick={handlePay}>
-          Upgrade (Test)
+        <h2>GrowFast Pro</h2>
+        <p>₱199 / month</p>
+        <ul>
+          <li>✅ Real AI Growth</li>
+          <li>✅ Unlimited Campaigns</li>
+          <li>✅ Dashboard Access</li>
+        </ul>
+        <button onClick={handleSubscribe} style={styles.button}>
+          Subscribe Now
         </button>
       </div>
     </div>
-  )
+  );
 }
 
 const styles = {
   page: {
     minHeight: "100vh",
     background: "#020617",
-    color: "#fff",
-    padding: 40
+    color: "#e5e7eb",
+    padding: "40px",
+    textAlign: "center",
   },
   card: {
+    maxWidth: "400px",
+    margin: "0 auto",
     border: "1px solid #1e293b",
-    padding: 20,
-    marginBottom: 20,
-    borderRadius: 10
+    borderRadius: "12px",
+    padding: "24px",
   },
   button: {
-    padding: "10px 20px",
+    marginTop: "20px",
+    padding: "12px 24px",
     background: "#22c55e",
     border: "none",
-    borderRadius: 6,
-    cursor: "pointer"
-  }
-}
+    borderRadius: "8px",
+    cursor: "pointer",
+    fontWeight: "600",
+  },
+};
