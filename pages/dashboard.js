@@ -1,116 +1,63 @@
-import { useState, useEffect } from "react"
-import { useRouter } from "next/router"
-import Head from "next/head"
+import { useState } from "react"
 
 export default function Dashboard() {
-  const router = useRouter()
-  const [platform, setPlatform] = useState("TikTok")
-  const [niche, setNiche] = useState("")
   const [result, setResult] = useState("")
   const [loading, setLoading] = useState(false)
 
-  useEffect(() => {
-    const paid = localStorage.getItem("paid")
-    if (paid !== "true") router.push("/pricing")
-  }, [router])
+  const handleGenerate = () => {
+    const isPaid = localStorage.getItem("paid") === "true"
 
-  const generateCampaign = async () => {
-    if (!niche) return alert("Enter a niche")
+    const today = new Date().toISOString().slice(0, 10)
+    const savedDate = localStorage.getItem("aiDate")
+    let count = Number(localStorage.getItem("aiCount") || 0)
+
+    if (savedDate !== today) {
+      count = 0
+      localStorage.setItem("aiDate", today)
+    }
+
+    if (!isPaid && count >= 3) {
+      alert("Free limit reached. Upgrade to continue.")
+      return
+    }
+
+    localStorage.setItem("aiCount", count + 1)
 
     setLoading(true)
-    setResult("")
-
-    const res = await fetch("/api/generate")
-    const data = await res.json()
-
-    setResult(data.text)
-    setLoading(false)
+    setTimeout(() => {
+      setResult("AI Strategy: Post daily reels, engage comments, collaborate.")
+      setLoading(false)
+    }, 1000)
   }
 
   return (
-    <>
-      <Head>
-        <title>Dashboard | GrowthAI Pro</title>
-      </Head>
+    <div style={styles.page}>
+      <h1>Dashboard</h1>
 
-      <div style={styles.container}>
-        <h1 style={styles.title}>🚀 Growth AI Dashboard</h1>
+      <button onClick={handleGenerate} style={styles.button}>
+        Generate AI Campaign
+      </button>
 
-        <div style={styles.card}>
-          <select
-            style={styles.input}
-            value={platform}
-            onChange={(e) => setPlatform(e.target.value)}
-          >
-            <option>TikTok</option>
-            <option>Instagram</option>
-            <option>Facebook</option>
-          </select>
+      {loading && <p>Generating...</p>}
+      {result && <pre>{result}</pre>}
 
-          <input
-            style={styles.input}
-            placeholder="Your niche (e.g. Fitness)"
-            value={niche}
-            onChange={(e) => setNiche(e.target.value)}
-          />
-
-          <button style={styles.button} onClick={generateCampaign}>
-            {loading ? "Generating..." : "Generate Campaign"}
-          </button>
-
-          {result && (
-            <pre style={styles.result}>{result}</pre>
-          )}
-        </div>
-      </div>
-    </>
+      <p style={{ opacity: 0.7 }}>Free users: 3/day</p>
+    </div>
   )
 }
 
 const styles = {
-  container: {
+  page: {
     minHeight: "100vh",
     background: "#020617",
-    color: "#e5e7eb",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    padding: "30px",
-  },
-  title: {
-    fontSize: "26px",
-    marginBottom: "20px",
-  },
-  card: {
-    background: "#0f172a",
-    padding: "24px",
-    borderRadius: "12px",
-    width: "100%",
-    maxWidth: "420px",
-  },
-  input: {
-    width: "100%",
-    padding: "12px",
-    marginBottom: "12px",
-    borderRadius: "6px",
-    border: "1px solid #1e293b",
-    background: "#020617",
-    color: "#e5e7eb",
+    color: "#fff",
+    padding: 40
   },
   button: {
-    width: "100%",
-    padding: "12px",
+    padding: "12px 20px",
     background: "#22c55e",
-    color: "#022c22",
-    fontWeight: "bold",
     border: "none",
-    borderRadius: "6px",
-    cursor: "pointer",
-  },
-  result: {
-    marginTop: "16px",
-    whiteSpace: "pre-wrap",
-    fontSize: "14px",
-    opacity: 0.9,
-  },
+    borderRadius: 6,
+    cursor: "pointer"
+  }
 }
