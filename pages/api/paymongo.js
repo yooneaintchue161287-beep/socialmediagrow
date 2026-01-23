@@ -15,15 +15,18 @@ export default async function handler(req, res) {
       body: JSON.stringify({
         data: {
           attributes: {
+            send_email_receipt: true,
+            show_description: true,
+            show_line_items: true,
             line_items: [
               {
-                name: "Growth AI – Starter Plan",
-                amount: 49900, // ₱499.00
+                name: "GrowFast Pro",
+                amount: 19900, // ₱199
                 currency: "PHP",
                 quantity: 1,
               },
             ],
-            payment_method_types: ["gcash", "card", "paymaya"],
+            payment_method_types: ["gcash", "card", "grab_pay"],
             success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/success`,
             cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/pricing`,
           },
@@ -32,7 +35,7 @@ export default async function handler(req, res) {
     })
 
     const data = await response.json()
-    res.status(200).json({ url: data.data.attributes.checkout_url })
+    res.status(200).json({ checkout_url: data.data.attributes.checkout_url })
   } catch (err) {
     res.status(500).json({ error: "Payment failed" })
   }
