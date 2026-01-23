@@ -1,5 +1,5 @@
 {
-  "name": "socialmediagrow",
+  "name": "growthai-pro",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -8,11 +8,8 @@
     "start": "next start"
   },
   "dependencies": {
-    "next": "^14.2.35",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
-  },
-  "devDependencies": {
-    "autoprefixer": "^10.4.17"
+    "next": "14.2.35",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
   }
 }
