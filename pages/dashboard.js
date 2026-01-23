@@ -1,63 +1,47 @@
-import { useState } from "react"
-
 export default function Dashboard() {
-  const [result, setResult] = useState("")
-  const [loading, setLoading] = useState(false)
-
-  const handleGenerate = () => {
-    const isPaid = localStorage.getItem("paid") === "true"
-
-    const today = new Date().toISOString().slice(0, 10)
-    const savedDate = localStorage.getItem("aiDate")
-    let count = Number(localStorage.getItem("aiCount") || 0)
-
-    if (savedDate !== today) {
-      count = 0
-      localStorage.setItem("aiDate", today)
-    }
-
-    if (!isPaid && count >= 3) {
-      alert("Free limit reached. Upgrade to continue.")
-      return
-    }
-
-    localStorage.setItem("aiCount", count + 1)
-
-    setLoading(true)
-    setTimeout(() => {
-      setResult("AI Strategy: Post daily reels, engage comments, collaborate.")
-      setLoading(false)
-    }, 1000)
-  }
+  const runAI = () => {
+    alert("🤖 AI Growth Engine running...\nTargeting real users now.");
+  };
 
   return (
     <div style={styles.page}>
       <h1>Dashboard</h1>
 
-      <button onClick={handleGenerate} style={styles.button}>
-        Generate AI Campaign
-      </button>
-
-      {loading && <p>Generating...</p>}
-      {result && <pre>{result}</pre>}
-
-      <p style={{ opacity: 0.7 }}>Free users: 3/day</p>
+      <div style={styles.card}>
+        <h2>AI Growth Engine</h2>
+        <p>
+          Our AI analyzes your niche, hashtags, and posting time to grow real
+          followers.
+        </p>
+        <button onClick={runAI} style={styles.button}>
+          Run AI Growth
+        </button>
+      </div>
     </div>
-  )
+  );
 }
 
 const styles = {
   page: {
     minHeight: "100vh",
     background: "#020617",
-    color: "#fff",
-    padding: 40
+    color: "#e5e7eb",
+    padding: "40px",
+  },
+  card: {
+    maxWidth: "600px",
+    margin: "0 auto",
+    border: "1px solid #1e293b",
+    borderRadius: "12px",
+    padding: "24px",
   },
   button: {
-    padding: "12px 20px",
+    marginTop: "16px",
+    padding: "12px 24px",
     background: "#22c55e",
     border: "none",
-    borderRadius: 6,
-    cursor: "pointer"
-  }
-}
+    borderRadius: "8px",
+    cursor: "pointer",
+    fontWeight: "600",
+  },
+};
