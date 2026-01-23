@@ -1,102 +1,110 @@
-import React from "react"
+import Head from "next/head"
 
 export default function Pricing() {
-  // Function to handle payment
   const handlePay = async () => {
     try {
-      const res = await fetch("/api/paymongo", { method: "POST" })
+      const res = await fetch("/api/paymongo", {
+        method: "POST",
+      })
+
       const data = await res.json()
 
-      if (data.url) {
-        // Redirect user to PayMongo checkout page
-        window.location.href = data.url
+      if (data.checkout_url) {
+        window.location.href = data.checkout_url
       } else {
-        alert("Payment failed")
+        alert("Payment failed. Please try again.")
       }
     } catch (err) {
-      console.error(err)
-      alert("Payment error")
+      alert("Something went wrong.")
     }
   }
 
   return (
-    <div style={styles.page}>
-      <header style={styles.header}>
-        <h1 style={styles.logo}>GrowFast</h1>
-      </header>
+    <>
+      <Head>
+        <title>Pricing | GrowthAI Pro</title>
+      </Head>
 
-      <main style={styles.main}>
-        <h2 style={styles.title}>Choose Your Plan</h2>
+      <div style={styles.container}>
+        <h1 style={styles.title}>Grow Faster with GrowthAI Pro</h1>
+        <p style={styles.subtitle}>
+          AI-powered growth tools for creators & businesses
+        </p>
 
         <div style={styles.card}>
-          <h3>Starter Plan</h3>
-          <p>Grow real followers automatically.</p>
-          <p>₱499 / month</p>
+          <h2 style={styles.plan}>Pro Plan</h2>
+          <p style={styles.price}>₱199 / one-time</p>
+
+          <ul style={styles.list}>
+            <li>✅ Unlimited campaigns</li>
+            <li>✅ AI growth insights</li>
+            <li>✅ Dashboard access</li>
+            <li>✅ Priority support</li>
+          </ul>
+
           <button style={styles.button} onClick={handlePay}>
             Start Growing
           </button>
         </div>
-
-        <div style={styles.card}>
-          <h3>Pro Plan</h3>
-          <p>Advanced targeting + analytics.</p>
-          <p>₱999 / month</p>
-          <button style={styles.button} onClick={handlePay}>
-            Start Growing
-          </button>
-        </div>
-      </main>
-    </div>
+      </div>
+    </>
   )
 }
 
-/* ---------- Styles ---------- */
 const styles = {
-  page: {
+  container: {
     minHeight: "100vh",
-    background: "linear-gradient(180deg, #0f172a, #020617)",
+    background: "#0f172a",
     color: "#e5e7eb",
-    fontFamily: "system-ui, -apple-system, BlinkMacSystemFont",
-  },
-  header: {
-    padding: "16px 20px",
     display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
     justifyContent: "center",
-    borderBottom: "1px solid #1e293b",
-  },
-  logo: {
-    fontSize: "24px",
-    fontWeight: "700",
-  },
-  main: {
-    padding: "40px 20px",
-    display: "grid",
-    gap: "24px",
-    maxWidth: "600px",
-    margin: "0 auto",
+    padding: "20px",
   },
   title: {
-    fontSize: "28px",
-    fontWeight: "700",
+    fontSize: "32px",
+    fontWeight: "bold",
+    marginBottom: "10px",
+  },
+  subtitle: {
+    fontSize: "16px",
+    opacity: 0.8,
+    marginBottom: "30px",
     textAlign: "center",
-    marginBottom: "24px",
   },
   card: {
     background: "#020617",
-    border: "1px solid #1e293b",
-    borderRadius: "14px",
-    padding: "24px",
+    borderRadius: "12px",
+    padding: "30px",
+    width: "100%",
+    maxWidth: "360px",
+    boxShadow: "0 0 30px rgba(0,0,0,0.5)",
     textAlign: "center",
   },
+  plan: {
+    fontSize: "22px",
+    marginBottom: "10px",
+  },
+  price: {
+    fontSize: "26px",
+    fontWeight: "bold",
+    marginBottom: "20px",
+  },
+  list: {
+    textAlign: "left",
+    marginBottom: "25px",
+    lineHeight: "1.8",
+  },
   button: {
-    marginTop: "16px",
-    padding: "12px 24px",
+    width: "100%",
+    padding: "14px",
     fontSize: "16px",
-    fontWeight: "600",
-    borderRadius: "10px",
-    border: "none",
+    fontWeight: "bold",
     background: "#22c55e",
     color: "#022c22",
+    border: "none",
+    borderRadius: "8px",
     cursor: "pointer",
   },
 }
