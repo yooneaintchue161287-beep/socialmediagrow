@@ -2,22 +2,11 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
 export default function Dashboard() {
-  const router = useRouter();
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    fetch("/api/me")
-      .then((res) => res.json())
-      .then((user) => {
-        if (user.subscription !== "active") {
-          router.push("/pricing");
-        } else {
-          setLoading(false);
-        }
-      });
-  }, []);
-
-  if (loading) return <p style={{ color: "#fff" }}>Checking subscription...</p>;
+const runAI = async () => {
+  const res = await fetch("/api/run-ai");
+  const data = await res.json();
+  alert(data.message);
+};
 
   return (
     <div style={styles.page}>
@@ -26,7 +15,10 @@ export default function Dashboard() {
       <div style={styles.card}>
         <h2>🤖 AI Growth Engine</h2>
         <p>Real audience targeting in progress</p>
-        <button style={styles.button}>Run AI Growth</button>
+        <button onClick={runAI} style={styles.button}>
+  Run AI Growth
+</button>
+
       </div>
     </div>
   );
